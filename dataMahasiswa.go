@@ -238,14 +238,7 @@ func tampilData() {
 			count = i
 			break
 		}
-
-		fmt.Println("NIM: ", mahasiswa[i].nim)
-		fmt.Println("Nama: ", mahasiswa[i].nama)
-		fmt.Println("Fakultas: ", mahasiswa[i].fakultas)
-		fmt.Println("Jurusan: ", mahasiswa[i].jurusan)
-		fmt.Println("Kelas: ", mahasiswa[i].kelas)
-		fmt.Println("No.HP: ", mahasiswa[i].nohp)
-		fmt.Println("Email: ", mahasiswa[i].email)
+		showData(i)
 		fmt.Println("=======================================================")
 		spasiData()
 
