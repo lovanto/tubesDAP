@@ -330,6 +330,7 @@ func cariBerdasarkanNim() {
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nim == kataKunci {
+			ditemukanTag()
 			showData(i)
 			key = true
 		}
@@ -357,6 +358,7 @@ func cariBerdasarkanNama() {
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nama == kataKunci {
+			ditemukanTag()
 			showData(i)
 			key = true
 		}
@@ -386,6 +388,7 @@ func cariBerdasarkanFakultas() {
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].fakultas == kataKunci {
+			ditemukanTag()
 			showData(i)
 			key = true
 		}
@@ -413,6 +416,7 @@ func cariBerdasarkanJurusan() {
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].jurusan == kataKunci {
+			ditemukanTag()
 			showData(i)
 			key = true
 		}
@@ -440,6 +444,7 @@ func cariBerdasarkanKelas() {
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].kelas == kataKunci {
+			ditemukanTag()
 			showData(i)
 			key = true
 		}
@@ -458,8 +463,6 @@ func cariBerdasarkanKelas() {
 }
 
 func showData(i int) {
-	spasiData()
-	fmt.Println("Data ditemukan")
 	spasiData()
 	fmt.Println("NIM: ", mahasiswa[i].nim)
 	fmt.Println("Nama: ", mahasiswa[i].nama)
@@ -480,6 +483,7 @@ func ubahData() {
 	fmt.Scanln(&nimS)
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nim == nimS {
+			ditemukanTag()
 			showData(i)
 			pos = i
 		}
@@ -606,6 +610,11 @@ func cekUpdateOrNo() bool {
 		cekUpdateOrNo()
 	}
 	return kebenaran
+}
+
+func ditemukanTag() {
+	spasiData()
+	fmt.Println("Data ditemukan")
 }
 
 func inputWithSpacing() string {
