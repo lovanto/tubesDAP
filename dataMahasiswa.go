@@ -241,7 +241,6 @@ func tampilData() {
 		showData(i)
 		fmt.Println("=======================================================")
 		spasiData()
-
 	}
 	tampilMenu()
 	menuPilih()
@@ -328,6 +327,7 @@ func cariBerdasarkanNim() {
 	fmt.Print("NIM: ")
 	fmt.Scanln(&kataKunci)
 	spasiData()
+
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nim == kataKunci {
 			showData(i)
@@ -352,11 +352,9 @@ func cariBerdasarkanNama() {
 	var key bool
 
 	fmt.Print("Nama: ")
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	kataKunci = scanner.Text()
-
+	kataKunci = inputWithSpacing()
 	spasiData()
+
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nama == kataKunci {
 			showData(i)
@@ -384,8 +382,8 @@ func cariBerdasarkanFakultas() {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
 	kataKunci = scanner.Text()
-
 	spasiData()
+
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].fakultas == kataKunci {
 			showData(i)
@@ -411,8 +409,8 @@ func cariBerdasarkanJurusan() {
 
 	fmt.Print("Jurusan: ")
 	kataKunci = inputWithSpacing()
-
 	spasiData()
+
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].jurusan == kataKunci {
 			showData(i)
@@ -438,8 +436,8 @@ func cariBerdasarkanKelas() {
 
 	fmt.Print("Kelas: ")
 	kataKunci = inputWithSpacing()
-
 	spasiData()
+
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].kelas == kataKunci {
 			showData(i)
