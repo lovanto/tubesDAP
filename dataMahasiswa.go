@@ -337,18 +337,7 @@ func cariBerdasarkanNim() {
 	spasiData()
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nim == kataKunci {
-			spasiData()
-			fmt.Println("Data ditemukan")
-			spasiData()
-			fmt.Println("NIM: ", mahasiswa[i].nim)
-			fmt.Println("Nama: ", mahasiswa[i].nama)
-			fmt.Println("Fakultas: ", mahasiswa[i].fakultas)
-			fmt.Println("Jurusan: ", mahasiswa[i].jurusan)
-			fmt.Println("Kelas: ", mahasiswa[i].kelas)
-			fmt.Println("No.HP: ", mahasiswa[i].nohp)
-			fmt.Println("Email: ", mahasiswa[i].email)
-			spasiData()
-
+			showData(i)
 			key = true
 		}
 	}
@@ -377,18 +366,7 @@ func cariBerdasarkanNama() {
 	spasiData()
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nama == kataKunci {
-			spasiData()
-			fmt.Println("Data ditemukan")
-			spasiData()
-			fmt.Println("NIM: ", mahasiswa[i].nim)
-			fmt.Println("Nama: ", mahasiswa[i].nama)
-			fmt.Println("Fakultas: ", mahasiswa[i].fakultas)
-			fmt.Println("Jurusan: ", mahasiswa[i].jurusan)
-			fmt.Println("Kelas: ", mahasiswa[i].kelas)
-			fmt.Println("No.HP: ", mahasiswa[i].nohp)
-			fmt.Println("Email: ", mahasiswa[i].email)
-			spasiData()
-
+			showData(i)
 			key = true
 		}
 	}
@@ -417,18 +395,7 @@ func cariBerdasarkanFakultas() {
 	spasiData()
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].fakultas == kataKunci {
-			spasiData()
-			fmt.Println("Data ditemukan")
-			spasiData()
-			fmt.Println("NIM: ", mahasiswa[i].nim)
-			fmt.Println("Nama: ", mahasiswa[i].nama)
-			fmt.Println("Fakultas: ", mahasiswa[i].fakultas)
-			fmt.Println("Jurusan: ", mahasiswa[i].jurusan)
-			fmt.Println("Kelas: ", mahasiswa[i].kelas)
-			fmt.Println("No.HP: ", mahasiswa[i].nohp)
-			fmt.Println("Email: ", mahasiswa[i].email)
-			spasiData()
-
+			showData(i)
 			key = true
 		}
 	}
@@ -455,18 +422,7 @@ func cariBerdasarkanJurusan() {
 	spasiData()
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].jurusan == kataKunci {
-			spasiData()
-			fmt.Println("Data ditemukan")
-			spasiData()
-			fmt.Println("NIM: ", mahasiswa[i].nim)
-			fmt.Println("Nama: ", mahasiswa[i].nama)
-			fmt.Println("Fakultas: ", mahasiswa[i].fakultas)
-			fmt.Println("Jurusan: ", mahasiswa[i].jurusan)
-			fmt.Println("Kelas: ", mahasiswa[i].kelas)
-			fmt.Println("No.HP: ", mahasiswa[i].nohp)
-			fmt.Println("Email: ", mahasiswa[i].email)
-			spasiData()
-
+			showData(i)
 			key = true
 		}
 	}
@@ -493,17 +449,7 @@ func cariBerdasarkanKelas() {
 	spasiData()
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].kelas == kataKunci {
-			spasiData()
-			fmt.Println("Data ditemukan")
-			spasiData()
-			fmt.Println("NIM: ", mahasiswa[i].nim)
-			fmt.Println("Nama: ", mahasiswa[i].nama)
-			fmt.Println("Fakultas: ", mahasiswa[i].fakultas)
-			fmt.Println("Jurusan: ", mahasiswa[i].jurusan)
-			fmt.Println("Kelas: ", mahasiswa[i].kelas)
-			fmt.Println("No.HP: ", mahasiswa[i].nohp)
-			fmt.Println("Email: ", mahasiswa[i].email)
-			spasiData()
+			showData(i)
 			key = true
 		}
 	}
@@ -543,17 +489,7 @@ func ubahData() {
 	fmt.Scanln(&nimS)
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nim == nimS {
-			spasiData()
-			fmt.Println("Data ditemukan")
-			spasiData()
-			fmt.Println("NIM: ", mahasiswa[i].nim)
-			fmt.Println("Nama: ", mahasiswa[i].nama)
-			fmt.Println("Fakultas: ", mahasiswa[i].fakultas)
-			fmt.Println("Jurusan: ", mahasiswa[i].jurusan)
-			fmt.Println("Kelas: ", mahasiswa[i].kelas)
-			fmt.Println("No.HP: ", mahasiswa[i].nohp)
-			fmt.Println("Email: ", mahasiswa[i].email)
-			spasiData()
+			showData(i)
 			pos = i
 		}
 	}
