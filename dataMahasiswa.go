@@ -100,7 +100,7 @@ func menuPilih() {
 		os.Exit(3)
 	default:
 		clsCode()
-		fmt.Println("Menu yang dipilih tidak ada. Silakan diulangi!")
+		fmt.Println(" ", "Menu yang dipilih tidak ada. Silakan diulangi!")
 		spacingData()
 		tampilMenu()
 	}
@@ -133,7 +133,7 @@ func menuTampilDataPilih() {
 		tampilMenu()
 	default:
 		clsCode()
-		fmt.Println("Menu yang dipilih tidak ada. Silakan diulangi!")
+		fmt.Println(" ", "Menu yang dipilih tidak ada. Silakan diulangi!")
 		spacingData()
 		menuTampilData()
 	}
@@ -142,7 +142,7 @@ func menuTampilDataPilih() {
 func menuCari() {
 	var menu int
 
-	fmt.Print(" ", "Menu -> ")
+	fmt.Print(" ", "Metode -> ")
 	fmt.Scanln(&menu)
 	switch menu {
 	case 1:
@@ -170,7 +170,7 @@ func menuCari() {
 		tampilMenu()
 	default:
 		clsCode()
-		fmt.Println("Metode yang dipilih tidak ada. Silakan diulangi!")
+		fmt.Println(" ", "Metode yang dipilih tidak ada. Silakan diulangi!")
 		spacingData()
 		tampilMenuCari()
 	}
@@ -400,7 +400,11 @@ func cariBerdasarkanNim() {
 			key = true
 		}
 	}
-	foundTag()
+	
+	if key == true {
+		foundTag()
+		spacingData()
+	}
 
 	if key == false {
 		fmt.Println(" ", "Data Tidak Ditemukan.")
@@ -431,7 +435,11 @@ func cariBerdasarkanNama() {
 			key = true
 		}
 	}
-	foundTag()
+	
+	if key == true {
+		foundTag()
+		spacingData()
+	}
 
 	if key == false {
 		fmt.Println(" ", "Data tidak ditemukan.")
@@ -463,7 +471,11 @@ func cariBerdasarkanFakultas() {
 			key = true
 		}
 	}
-	foundTag()
+	
+	if key == true {
+		foundTag()
+		spacingData()
+	}
 
 	if key == false {
 		fmt.Println(" ", "Data tidak ditemukan.")
@@ -495,7 +507,11 @@ func cariBerdasarkanJurusan() {
 			key = true
 		}
 	}
-	foundTag()
+	
+	if key == true {
+		foundTag()
+		spacingData()
+	}
 
 	if key == false {
 		fmt.Println(" ", "Data tidak ditemukan.")
@@ -527,7 +543,11 @@ func cariBerdasarkanKelas() {
 			key = true
 		}
 	}
-	foundTag()
+	
+	if key == true {
+		foundTag()
+		spacingData()
+	}
 
 	if key == false {
 		fmt.Println(" ", "Data tidak ditemukan.")
