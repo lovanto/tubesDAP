@@ -548,17 +548,31 @@ func cariBerdasarkanKelas() {
 func updateData() {
 	var nimS int
 	var namaS, fakultasS, jurusanS, kelasS, nohpS, emailS string
+	var namaM, fakultasM, jurusanM, kelasM, nohpM, emailM string
 	var pos int
 	var key bool
 
 	fmt.Print(" ", "NIM: ")
 	fmt.Scanln(&nimS)
+
+	spacingData()
+	fmt.Println(" ", "Ketik - jika tidak ingin mengubah data.")
+	spacingData()
+	fmt.Println("=======================================================")
+
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nim == nimS {
 			foundTag()
 			showData(i)
 			pos = i
 			key = true
+
+			namaM = mahasiswa[i].nama
+			fakultasM = mahasiswa[i].fakultas
+			jurusanM = mahasiswa[i].jurusan
+			kelasM = mahasiswa[i].kelas
+			nohpM = mahasiswa[i].nohp
+			emailM = mahasiswa[i].email
 
 			fmt.Print(" ", "Nama: ")
 			namaS = inputWithSpacing()
@@ -575,15 +589,43 @@ func updateData() {
 		}
 	}
 
+	spacingData()
+	fmt.Println("=======================================================")
+
 	if key == true {
 		if updateOrNo() == true {
 			mahasiswa[pos].nim = nimS
+
 			mahasiswa[pos].nama = namaS
+			if namaS == "-" {
+				mahasiswa[pos].nama = namaM
+			}
+
 			mahasiswa[pos].fakultas = fakultasS
+			if fakultasS == "-" {
+				mahasiswa[pos].fakultas = fakultasM
+			}
+
 			mahasiswa[pos].jurusan = jurusanS
+			if jurusanS == "-" {
+				mahasiswa[pos].jurusan = jurusanM
+			}
+
 			mahasiswa[pos].kelas = kelasS
+			if kelasS == "-" {
+				mahasiswa[pos].kelas = kelasM
+			}
+
 			mahasiswa[pos].nohp = nohpS
+			if nohpS == "-" {
+				mahasiswa[pos].nohp = nohpM
+			}
+
 			mahasiswa[pos].email = emailS
+			if emailS == "-" {
+				mahasiswa[pos].email = emailM
+			}
+
 			fmt.Println(" ", "Data berhasil diperbarui.")
 			spacingData()
 			tampilMenu()
@@ -768,7 +810,7 @@ func spacingData() {
 
 func foundTag() {
 	spacingData()
-	fmt.Println("Data ditemukan")
+	fmt.Println(" ", "Data ditemukan")
 }
 
 func inputWithSpacing() string {
