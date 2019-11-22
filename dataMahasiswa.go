@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"os/exec"
 )
 
 const n = 100
@@ -30,12 +31,14 @@ func tampilMenu() {
 	fmt.Println("2. Menambah data.")
 	fmt.Println("3. Mencari data.")
 	fmt.Println("4. Mengubah data.")
-	fmt.Println("5. Keluar.")
+	fmt.Println("5. Menghapus data.")
+	fmt.Println("6. Keluar.")
 
 	menuPilih()
 }
 
 func menuTampilData() {
+	clsCode()
 	fmt.Println("Tampilkan dengan?")
 	fmt.Println("1. Apa adanya.")
 	fmt.Println("2. Berdasarkan nim terkecil ke terbesar.")
@@ -48,6 +51,7 @@ func menuTampilData() {
 }
 
 func tampilMenuCari() {
+	clsCode()
 	fmt.Println("Metode apa yang ingin digunakan?")
 	fmt.Println("1. NIM.")
 	fmt.Println("2. Nama.")
@@ -73,6 +77,7 @@ func menuPilih() {
 		menuTampilData()
 	case 2:
 		spacingData()
+		clsCode()
 		tambahData()
 	case 3:
 		spacingData()
@@ -82,9 +87,12 @@ func menuPilih() {
 		updateData()
 	case 5:
 		spacingData()
+		hapusData()
+	case 6:
+		spacingData()
 		os.Exit(3)
 	default:
-		fmt.Println(" ")
+		clsCode()
 		fmt.Println("Menu yang dipilih tidak ada. Silakan diulangi!")
 		spacingData()
 		tampilMenu()
@@ -113,12 +121,13 @@ func menuTampilDataPilih() {
 		tampilZToA()
 	case 6:
 		spacingData()
+		clsCode()
 		tampilMenu()
 	default:
-		fmt.Println(" ")
+		clsCode()
 		fmt.Println("Menu yang dipilih tidak ada. Silakan diulangi!")
 		spacingData()
-		tampilMenu()
+		menuTampilData()
 	}
 }
 
@@ -128,25 +137,25 @@ func menuCari() {
 	fmt.Scanln(&menu)
 	switch menu {
 	case 1:
-		spacingData()
+		clsCode()
 		cariBerdasarkanNim()
 	case 2:
-		spacingData()
+		clsCode()
 		cariBerdasarkanNama()
 	case 3:
-		spacingData()
+		clsCode()
 		cariBerdasarkanFakultas()
 	case 4:
-		spacingData()
+		clsCode()
 		cariBerdasarkanJurusan()
 	case 5:
-		spacingData()
+		clsCode()
 		cariBerdasarkanKelas()
 	case 6:
-		spacingData()
+		clsCode()
 		tampilMenu()
 	default:
-		fmt.Println(" ")
+		clsCode()
 		fmt.Println("Metode yang dipilih tidak ada. Silakan diulangi!")
 		spacingData()
 		tampilMenuCari()
@@ -158,6 +167,7 @@ func menuCari() {
 // START OF SORT DATA CODE
 // INSERTION SORT
 func tampilMinToMax() {
+	clsCode()
 	for i := 1; i < count; i++ {
 		min := mahasiswa[i].nim
 		nama := mahasiswa[i].nama
@@ -189,6 +199,7 @@ func tampilMinToMax() {
 }
 
 func tampilMaxToMin() {
+	clsCode()
 	for i := 1; i < count; i++ {
 		min := mahasiswa[i].nim
 		nama := mahasiswa[i].nama
@@ -220,6 +231,7 @@ func tampilMaxToMin() {
 }
 
 func tampilAToZ() {
+	clsCode()
 	for i := 1; i < count; i++ {
 		min := mahasiswa[i].nama
 		nim := mahasiswa[i].nim
@@ -251,6 +263,7 @@ func tampilAToZ() {
 }
 
 func tampilZToA() {
+	clsCode()
 	for i := 1; i < count; i++ {
 		min := mahasiswa[i].nama
 		nim := mahasiswa[i].nim
@@ -286,6 +299,7 @@ func tampilZToA() {
 // START OF SHOW DATA CODE
 
 func tampilData() {
+	clsCode()
 	for i := 0; i < n; i++ {
 		if mahasiswa[i].nim == 0 {
 			count = i
@@ -295,6 +309,7 @@ func tampilData() {
 		fmt.Println("=======================================================")
 		spacingData()
 	}
+	spacingData()
 	tampilMenu()
 	menuPilih()
 }
@@ -498,6 +513,7 @@ func updateData() {
 	var nimS int
 	var namaS, fakultasS, jurusanS, kelasS, nohpS, emailS string
 	var pos int
+	var key bool
 
 	fmt.Print("NIM: ")
 	fmt.Scanln(&nimS)
@@ -506,40 +522,89 @@ func updateData() {
 			foundTag()
 			showData(i)
 			pos = i
+			key = true
+
+			fmt.Print("Nama: ")
+			namaS = inputWithSpacing()
+			fmt.Print("Fakultas: ")
+			fakultasS = inputWithSpacing()
+			fmt.Print("Jurusan: ")
+			jurusanS = inputWithSpacing()
+			fmt.Print("Kelas: ")
+			kelasS = inputWithSpacing()
+			fmt.Print("No.HP: ")
+			nohpS = inputWithSpacing()
+			fmt.Print("Email: ")
+			emailS = inputWithSpacing()
 		}
 	}
 
-	fmt.Print("Nama: ")
-	namaS = inputWithSpacing()
-	fmt.Print("Fakultas: ")
-	fakultasS = inputWithSpacing()
-	fmt.Print("Jurusan: ")
-	jurusanS = inputWithSpacing()
-	fmt.Print("Kelas: ")
-	kelasS = inputWithSpacing()
-	fmt.Print("No.HP: ")
-	nohpS = inputWithSpacing()
-	fmt.Print("Email: ")
-	emailS = inputWithSpacing()
-
-	if updateOrNo() == true {
-		mahasiswa[pos].nim = nimS
-		mahasiswa[pos].nama = namaS
-		mahasiswa[pos].fakultas = fakultasS
-		mahasiswa[pos].jurusan = jurusanS
-		mahasiswa[pos].kelas = kelasS
-		mahasiswa[pos].nohp = nohpS
-		mahasiswa[pos].email = emailS
-		fmt.Println("Data berhasil diperbarui")
-		spacingData()
-		tampilMenu()
+	if key == true {
+		if updateOrNo() == true {
+			mahasiswa[pos].nim = nimS
+			mahasiswa[pos].nama = namaS
+			mahasiswa[pos].fakultas = fakultasS
+			mahasiswa[pos].jurusan = jurusanS
+			mahasiswa[pos].kelas = kelasS
+			mahasiswa[pos].nohp = nohpS
+			mahasiswa[pos].email = emailS
+			fmt.Println("Data berhasil diperbarui.")
+			spacingData()
+			tampilMenu()
+		} else {
+			fmt.Println("Data gagal diperbarui.")
+			tampilMenu()
+		}
 	} else {
-		fmt.Println("Data gagal diperbarui")
+		fmt.Println("Data tidak ditemukan.")
+		spacingData()
 		tampilMenu()
 	}
 }
 
 // END OF UPDATE DATA CODE
+
+// START OF DELETE DATA CODE
+
+func hapusData() {
+	var nimS int
+	var key bool
+
+	fmt.Print("NIM: ")
+	fmt.Scanln(&nimS)
+	for i := 0; i < count; i++ {
+		if mahasiswa[i].nim == nimS {
+			foundTag()
+			showData(i)
+			key = true
+		}
+	}
+
+	if key == true {
+		if deleteOrNo() == true {
+			for j := 0; j < count; j++ {
+				if mahasiswa[j].nim == nimS {
+					mahasiswa[j] = mahasiswa[j+1]
+				}
+				if key == true {
+					mahasiswa[j+1] = mahasiswa[j+2]
+				}
+			}
+			fmt.Println("Data berhasil dihapus.")
+			spacingData()
+			tampilMenu()
+		} else {
+			fmt.Println("Data gagal diperbarui.")
+			tampilMenu()
+		}
+	} else {
+		fmt.Println("Data tidak ditemukan.")
+		spacingData()
+		tampilMenu()
+	}
+}
+
+// END OF DELETE DATA CODE
 
 // START OF BOOLEAN CODE
 
@@ -584,6 +649,24 @@ func updateOrNo() bool {
 	var kebenaran bool
 
 	fmt.Println("Apakah anda yakin ingin memperbarui data? Y/N")
+	fmt.Scanln(&yesOrNo)
+	spacingData()
+	if yesOrNo == "Y" || yesOrNo == "y" {
+		kebenaran = true
+	} else if yesOrNo == "N" || yesOrNo == "n" {
+		kebenaran = false
+	} else {
+		fmt.Println("Jawaban anda tidak sesuai. Silakan diulangi!")
+		updateOrNo()
+	}
+	return kebenaran
+}
+
+func deleteOrNo() bool {
+	var yesOrNo string
+	var kebenaran bool
+
+	fmt.Println("Apakah anda yakin ingin menghapus data? Y/N")
 	fmt.Scanln(&yesOrNo)
 	spacingData()
 	if yesOrNo == "Y" || yesOrNo == "y" {
@@ -651,9 +734,16 @@ func inputWithSpacing() string {
 	return scanner.Text()
 }
 
+func clsCode() {
+	cmd := exec.Command("cmd", "/c", "cls")
+	cmd.Stdout = os.Stdout
+	cmd.Run()
+}
+
 // END OF ANOTHER CODE
 
 func main() {
+	clsCode()
 	tempData()
 	countData()
 	tampilMenu()
