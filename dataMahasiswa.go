@@ -7,7 +7,7 @@ import (
 	"os/exec"
 )
 
-const n = 100
+const n = 1000
 
 type typeMahasiswa struct {
 	nim      int
@@ -83,8 +83,8 @@ func menuPilih() {
 		spacingData()
 		menuTampilData()
 	case 2:
-		spacingData()
 		clsCode()
+		spacingData()
 		tambahData()
 	case 3:
 		spacingData()
@@ -340,30 +340,34 @@ func showData(i int) {
 // START OF ADD NEW DATA CODE
 
 func tambahData() {
+	fmt.Println("=======================================================")
+	spacingData()
 	for i := count; i < n; i++ {
-		fmt.Print("NIM: ")
+		fmt.Print(" ", "NIM: ")
 		fmt.Scanln(&mahasiswa[i].nim)
-		fmt.Print("Nama: ")
+		fmt.Print(" ", "Nama: ")
 		mahasiswa[i].nama = inputWithSpacing()
-		fmt.Print("Fakultas: ")
+		fmt.Print(" ", "Fakultas: ")
 		mahasiswa[i].fakultas = inputWithSpacing()
-		fmt.Print("Jurusan: ")
+		fmt.Print(" ", "Jurusan: ")
 		mahasiswa[i].jurusan = inputWithSpacing()
-		fmt.Print("Kelas: ")
+		fmt.Print(" ", "Kelas: ")
 		mahasiswa[i].kelas = inputWithSpacing()
-		fmt.Print("No.HP: ")
+		fmt.Print(" ", "No.HP: ")
 		mahasiswa[i].nohp = inputWithSpacing()
-		fmt.Print("Email: ")
+		fmt.Print(" ", "Email: ")
 		mahasiswa[i].email = inputWithSpacing()
-		fmt.Println("Data berhasil ditambahkan.")
 
+		spacingData()
+		fmt.Println("=======================================================")
+		spacingData()
 		if addMoreOrNo() == true {
 			spacingData()
 			break
 		}
 	}
-	spacingData()
-	main()
+	fmt.Println(" ", "Data berhasil ditambahkan.")
+	tampilMenu()
 }
 
 // END OF ADD NEW DATA CODE
@@ -621,17 +625,21 @@ func addMoreOrNo() bool {
 	var yesOrNo string
 	var kebenaran bool
 
-	fmt.Println("Apakah anda ingin menambah data lagi? Y/N")
-	fmt.Scanln(&yesOrNo)
-	spacingData()
-	if yesOrNo == "N" || yesOrNo == "n" {
-		kebenaran = true
-	} else if yesOrNo == "Y" || yesOrNo == "y" {
-		kebenaran = false
-	} else {
-		fmt.Println("Jawaban anda tidak sesuai. Silakan diulangi!")
-		addMoreOrNo()
+	for kebenaran = false; !kebenaran; {
+		fmt.Print(" ", "Apakah anda ingin menambah data lagi? Y/N. ")
+		fmt.Scanln(&yesOrNo)
+		spacingData()
+		kebenaran = yesOrNo == "N" || yesOrNo == "n"
+
+		if yesOrNo == "Y" || yesOrNo == "y" {
+			countData()
+			tambahData()
+		}
+		if yesOrNo != "N" || yesOrNo != "n" || yesOrNo != "Y" || yesOrNo != "y" {
+			fmt.Println(" ", "Jawaban anda tidak sesuai. Silakan diulangi!")
+		}
 	}
+
 	return kebenaran
 }
 
