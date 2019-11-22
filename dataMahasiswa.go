@@ -547,8 +547,8 @@ func updateData() {
 	var namaS, fakultasS, jurusanS, kelasS, nohpS, emailS string
 	var namaM, fakultasM, jurusanM, kelasM, nohpM, emailM string
 	var pos int
-	var key bool
 
+	pos = -1
 	clsCode()
 	spacingData()
 	fmt.Print(" ", "NIM: ")
@@ -567,7 +567,6 @@ func updateData() {
 			fmt.Println("=======================================================")
 			spacingData()
 			pos = i
-			key = true
 
 			namaM = mahasiswa[i].nama
 			fakultasM = mahasiswa[i].fakultas
@@ -594,7 +593,7 @@ func updateData() {
 	spacingData()
 	fmt.Println("=======================================================")
 
-	if key == true {
+	if pos != -1 {
 		if updateOrNo() == true {
 			mahasiswa[pos].nim = nimS
 
@@ -658,6 +657,8 @@ func hapusData() {
 	var nimS int
 	var key bool
 
+	clsCode()
+	spacingData()
 	fmt.Print(" ", "NIM: ")
 	fmt.Scanln(&nimS)
 	for i := 0; i < count; i++ {
@@ -678,14 +679,20 @@ func hapusData() {
 					mahasiswa[j+1] = mahasiswa[j+2]
 				}
 			}
+			clsCode()
+			spacingData()
 			fmt.Println(" ", "Data berhasil dihapus.")
 			spacingData()
 			tampilMenu()
 		} else {
+			clsCode()
+			spacingData()
 			fmt.Println(" ", "Data gagal diperbarui.")
 			tampilMenu()
 		}
 	} else {
+		clsCode()
+		spacingData()
 		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 		tampilMenu()
@@ -743,17 +750,20 @@ func updateOrNo() bool {
 	var yesOrNo string
 	var kebenaran bool
 
-	fmt.Println("Apakah anda yakin ingin memperbarui data? Y/N")
-	fmt.Scanln(&yesOrNo)
-	spacingData()
-	if yesOrNo == "Y" || yesOrNo == "y" {
-		kebenaran = true
-	} else if yesOrNo == "N" || yesOrNo == "n" {
-		kebenaran = false
-	} else {
-		fmt.Println("Jawaban anda tidak sesuai. Silakan diulangi!")
-		updateOrNo()
+	for kebenaran = false; !kebenaran; {
+		fmt.Print(" ", "Apakah anda ingin memperbarui data? Y/N. ")
+		fmt.Scanln(&yesOrNo)
+		spacingData()
+		kebenaran = yesOrNo == "Y" || yesOrNo == "y"
+
+		if yesOrNo == "N" || yesOrNo == "n" {
+			tampilMenu()
+		}
+		if yesOrNo != "N" || yesOrNo != "n" || yesOrNo != "Y" || yesOrNo != "y" {
+			fmt.Println(" ", "Jawaban anda tidak sesuai. Silakan diulangi!")
+		}
 	}
+
 	return kebenaran
 }
 
@@ -761,17 +771,20 @@ func deleteOrNo() bool {
 	var yesOrNo string
 	var kebenaran bool
 
-	fmt.Println("Apakah anda yakin ingin menghapus data? Y/N")
-	fmt.Scanln(&yesOrNo)
-	spacingData()
-	if yesOrNo == "Y" || yesOrNo == "y" {
-		kebenaran = true
-	} else if yesOrNo == "N" || yesOrNo == "n" {
-		kebenaran = false
-	} else {
-		fmt.Println("Jawaban anda tidak sesuai. Silakan diulangi!")
-		updateOrNo()
+	for kebenaran = false; !kebenaran; {
+		fmt.Print(" ", "Apakah anda ingin menghapus data? Y/N. ")
+		fmt.Scanln(&yesOrNo)
+		spacingData()
+		kebenaran = yesOrNo == "Y" || yesOrNo == "y"
+
+		if yesOrNo == "N" || yesOrNo == "n" {
+			tampilMenu()
+		}
+		if yesOrNo != "N" || yesOrNo != "n" || yesOrNo != "Y" || yesOrNo != "y" {
+			fmt.Println(" ", "Jawaban anda tidak sesuai. Silakan diulangi!")
+		}
 	}
+
 	return kebenaran
 }
 
