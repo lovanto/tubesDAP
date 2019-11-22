@@ -3,8 +3,10 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"os/exec"
+	"strconv"
 )
 
 const n = 1000
@@ -26,13 +28,15 @@ var count int
 // START OF MENU LIST CODE
 
 func tampilMenu() {
+	spacingData()
 	fmt.Println(" ", "Apa yang ingin anda lakukan?")
 	fmt.Println(" ", "1. Menampilkan data.")
 	fmt.Println(" ", "2. Menambah data.")
 	fmt.Println(" ", "3. Mencari data.")
 	fmt.Println(" ", "4. Mengubah data.")
 	fmt.Println(" ", "5. Menghapus data.")
-	fmt.Println(" ", "6. Keluar.")
+	fmt.Println(" ", "6. Export to TXT.")
+	fmt.Println(" ", "7. Keluar.")
 
 	spacingData()
 	menuPilih()
@@ -66,6 +70,19 @@ func tampilMenuCari() {
 	menuCari()
 }
 
+func tampilMenuExport() {
+	spacingData()
+	createFile()
+	fmt.Println(" ", "Apa yang ingin anda lakukan?")
+	fmt.Println(" ", "1. Export data ke txt.")
+	fmt.Println(" ", "2. Tampilkan data dari txt.")
+	fmt.Println(" ", "3. Hapus file txt.")
+	fmt.Println(" ", "4. Kembali.")
+
+	spacingData()
+	menuTampilExport()
+}
+
 // END OF MENU LIST CODE
 
 // START OF ANSWER MENU CODE
@@ -92,6 +109,9 @@ func menuPilih() {
 		spacingData()
 		hapusData()
 	case 6:
+		deleteSpace()
+		tampilMenuExport()
+	case 7:
 		spacingData()
 		os.Exit(3)
 	default:
@@ -164,6 +184,35 @@ func menuCari() {
 		fmt.Println("Metode yang dipilih tidak ada. Silakan diulangi!")
 		spacingData()
 		tampilMenuCari()
+	}
+}
+
+func menuTampilExport() {
+	var menu int
+
+	fmt.Print(" ", "Menu -> ")
+	fmt.Scanln(&menu)
+	switch menu {
+	case 1:
+		deleteSpace()
+		writeFile()
+		tampilMenuExport()
+	case 2:
+		deleteSpace()
+		readFile()
+		tampilMenuExport()
+	case 3:
+		deleteSpace()
+		deleteFile()
+		tampilMenu()
+	case 4:
+		deleteSpace()
+		tampilMenu()
+	default:
+		clsCode()
+		fmt.Println("Menu yang dipilih tidak ada. Silakan diulangi!")
+		spacingData()
+		menuTampilData()
 	}
 }
 
@@ -811,8 +860,127 @@ func clsCode() {
 
 // END OF ANOTHER CODE
 
+var path = "test.txt"
+
+func isError(err error) bool {
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	return (err != nil)
+}
+
+func createFile() {
+	var _, err = os.Stat(path)
+	if os.IsNotExist(err) {
+		var file, err = os.Create(path)
+		if isError(err) {
+			return
+		}
+		defer file.Close()
+	}
+}
+
+func writeFile() {
+	// buka file dengan level akses READ & WRITE
+	var file, err = os.OpenFile(path, os.O_RDWR, 0644)
+	if isError(err) {
+		return
+	}
+	defer file.Close()
+	for i := 0; i < 3; i++ {
+		_, err = file.WriteString(strconv.Itoa(mahasiswa[i].nim))
+		_, err = file.WriteString("\n")
+		_, err = file.WriteString(mahasiswa[i].nama)
+		_, err = file.WriteString("\n")
+		_, err = file.WriteString(mahasiswa[i].fakultas)
+		_, err = file.WriteString("\n")
+		_, err = file.WriteString(mahasiswa[i].jurusan)
+		_, err = file.WriteString("\n")
+		_, err = file.WriteString(mahasiswa[i].kelas)
+		_, err = file.WriteString("\n")
+		_, err = file.WriteString(mahasiswa[i].nohp)
+		_, err = file.WriteString("\n")
+		_, err = file.WriteString(mahasiswa[i].email)
+		_, err = file.WriteString("\n")
+		_, err = file.WriteString("\n")
+	}
+
+	// simpan perubahan
+	err = file.Sync()
+	if isError(err) {
+		return
+	}
+	fmt.Println(" ", "Berhasil membuat file txt.")
+	spacingData()
+	fmt.Println(" ", "Berhasil menulis data ke txt.")
+}
+
+func readFile() {
+	// buka file
+	var file, err = os.OpenFile(path, os.O_RDWR, 0644)
+	if isError(err) {
+		return
+	}
+	defer file.Close()
+
+	// baca file
+	var text = make([]byte, 1024)
+	for {
+		n, err := file.Read(text)
+		if err != io.EOF {
+			if isError(err) {
+				break
+			}
+		}
+		if n == 0 {
+			break
+		}
+	}
+	if isError(err) {
+		return
+	}
+	fmt.Println(string(text))
+}
+
+func deleteFile() {
+	var err = os.Remove(path)
+	if isError(err) {
+		return
+	}
+
+	fmt.Println(" ", "File txt berhasil dihapus.")
+}
+
+func tempData() {
+	mahasiswa[0].nim = 1302194068
+	mahasiswa[0].nama = "Rifky Lovanto"
+	mahasiswa[0].fakultas = "Fakultas Informatika"
+	mahasiswa[0].jurusan = "S1 Rekayasa Perangkat Lunak"
+	mahasiswa[0].kelas = "SE-43-02"
+	mahasiswa[0].nohp = "+62-878-2383-7566"
+	mahasiswa[0].email = "lovanto@student.telkomuniversity.ac.id"
+
+	mahasiswa[1].nim = 1302194070
+	mahasiswa[1].nama = "Rizal Maidan Firdaus"
+	mahasiswa[1].fakultas = "Fakultas Rekayasa Industri"
+	mahasiswa[1].jurusan = "S1 Sistem Informasi"
+	mahasiswa[1].kelas = "SE-43-02"
+	mahasiswa[1].nohp = "+62-878-2383-7555"
+	mahasiswa[1].email = "rizalmf@student.telkomuniversity.ac.id"
+
+	mahasiswa[2].nim = 1302194048
+	mahasiswa[2].nama = "Aku Bukan Ya"
+	mahasiswa[2].fakultas = "Fakultas Informatika"
+	mahasiswa[2].jurusan = "S1 Rekayasa Perangkat Lunak"
+	mahasiswa[2].kelas = "SE-43-01"
+	mahasiswa[2].nohp = "+62-878-2383-7566"
+	mahasiswa[2].email = "lovanto@student.telkomuniversity.ac.id"
+}
+
 func main() {
 	clsCode()
+	tempData()
 	countData()
 	tampilMenu()
 }
