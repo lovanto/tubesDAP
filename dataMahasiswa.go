@@ -371,6 +371,8 @@ func tambahData() {
 			break
 		}
 	}
+	clsCode()
+	spacingData()
 	fmt.Println(" ", "Data berhasil ditambahkan.")
 	tampilMenu()
 }
@@ -404,13 +406,18 @@ func cariBerdasarkanNim() {
 
 	if key == false {
 		spacingData()
-		fmt.Println(" ", "Data Tidak Ditemukan.")
+		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 	}
 
-	spacingData()
 	if findMoreOrNo() == true {
+		clsCode()
+		spacingData()
 		tampilMenuCari()
+	} else {
+		clsCode()
+		spacingData()
+		tampilMenu()
 	}
 }
 
@@ -434,13 +441,18 @@ func cariBerdasarkanNama() {
 	}
 
 	if key == false {
+		spacingData()
 		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 	}
 
 	if findMoreOrNo() == true {
+		clsCode()
+		spacingData()
 		tampilMenuCari()
 	} else {
+		clsCode()
+		spacingData()
 		tampilMenu()
 	}
 }
@@ -465,13 +477,18 @@ func cariBerdasarkanFakultas() {
 	}
 
 	if key == false {
+		spacingData()
 		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 	}
 
 	if findMoreOrNo() == true {
+		clsCode()
+		spacingData()
 		tampilMenuCari()
 	} else {
+		clsCode()
+		spacingData()
 		tampilMenu()
 	}
 }
@@ -496,13 +513,18 @@ func cariBerdasarkanJurusan() {
 	}
 
 	if key == false {
+		spacingData()
 		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 	}
 
 	if findMoreOrNo() == true {
+		clsCode()
+		spacingData()
 		tampilMenuCari()
 	} else {
+		clsCode()
+		spacingData()
 		tampilMenu()
 	}
 }
@@ -527,13 +549,18 @@ func cariBerdasarkanKelas() {
 	}
 
 	if key == false {
+		spacingData()
 		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 	}
 
 	if findMoreOrNo() == true {
+		clsCode()
+		spacingData()
 		tampilMenuCari()
 	} else {
+		clsCode()
+		spacingData()
 		tampilMenu()
 	}
 }
@@ -813,7 +840,7 @@ func tempData() {
 	mahasiswa[2].nama = "Aku Bukan Ya"
 	mahasiswa[2].fakultas = "Fakultas Informatika"
 	mahasiswa[2].jurusan = "S1 Rekayasa Perangkat Lunak"
-	mahasiswa[2].kelas = "SE-43-02"
+	mahasiswa[2].kelas = "SE-43-01"
 	mahasiswa[2].nohp = "+62-878-2383-7566"
 	mahasiswa[2].email = "lovanto@student.telkomuniversity.ac.id"
 }
