@@ -26,7 +26,6 @@ var count int
 // START OF MENU LIST CODE
 
 func tampilMenu() {
-	spacingData()
 	fmt.Println(" ", "Apa yang ingin anda lakukan?")
 	fmt.Println(" ", "1. Menampilkan data.")
 	fmt.Println(" ", "2. Menambah data.")
@@ -40,8 +39,7 @@ func tampilMenu() {
 }
 
 func menuTampilData() {
-	clsCode()
-	spacingData()
+	deleteSpace()
 	fmt.Println(" ", "Tampilkan dengan?")
 	fmt.Println(" ", "1. Apa adanya.")
 	fmt.Println(" ", "2. Berdasarkan nim terkecil ke terbesar.")
@@ -55,8 +53,7 @@ func menuTampilData() {
 }
 
 func tampilMenuCari() {
-	clsCode()
-	spacingData()
+	deleteSpace()
 	fmt.Println(" ", "Metode apa yang ingin digunakan?")
 	fmt.Println(" ", "1. NIM.")
 	fmt.Println(" ", "2. Nama.")
@@ -83,8 +80,7 @@ func menuPilih() {
 		spacingData()
 		menuTampilData()
 	case 2:
-		clsCode()
-		spacingData()
+		deleteSpace()
 		tambahData()
 	case 3:
 		spacingData()
@@ -146,30 +142,25 @@ func menuCari() {
 	fmt.Scanln(&menu)
 	switch menu {
 	case 1:
-		clsCode()
-		spacingData()
+		deleteSpace()
 		cariBerdasarkanNim()
 	case 2:
-		clsCode()
-		spacingData()
+		deleteSpace()
 		cariBerdasarkanNama()
 	case 3:
-		clsCode()
-		spacingData()
+		deleteSpace()
 		cariBerdasarkanFakultas()
 	case 4:
-		clsCode()
-		spacingData()
+		deleteSpace()
 		cariBerdasarkanJurusan()
 	case 5:
-		clsCode()
-		spacingData()
+		deleteSpace()
 		cariBerdasarkanKelas()
 	case 6:
-		clsCode()
+		deleteSpace()
 		tampilMenu()
 	default:
-		clsCode()
+		deleteSpace()
 		fmt.Println("Metode yang dipilih tidak ada. Silakan diulangi!")
 		spacingData()
 		tampilMenuCari()
@@ -371,8 +362,7 @@ func tambahData() {
 			break
 		}
 	}
-	clsCode()
-	spacingData()
+	deleteSpace()
 	fmt.Println(" ", "Data berhasil ditambahkan.")
 	tampilMenu()
 }
@@ -395,28 +385,22 @@ func cariBerdasarkanNim() {
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nim == kataKunci {
-			spacingData()
-			fmt.Println("=======================================================")
+			spaceEquals()
 			showData(i)
-			spacingData()
-			fmt.Println("=======================================================")
+			spaceEquals()
 			key = true
 		}
 	}
 
 	if key == false {
-		spacingData()
-		fmt.Println(" ", "Data tidak ditemukan.")
-		spacingData()
+		spaceNull()
 	}
 
 	if findMoreOrNo() == true {
-		clsCode()
-		spacingData()
+		deleteSpace()
 		tampilMenuCari()
 	} else {
-		clsCode()
-		spacingData()
+		deleteSpace()
 		tampilMenu()
 	}
 }
@@ -431,28 +415,22 @@ func cariBerdasarkanNama() {
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nama == kataKunci {
-			spacingData()
-			fmt.Println("=======================================================")
+			spaceEquals()
 			showData(i)
-			spacingData()
-			fmt.Println("=======================================================")
+			spaceEquals()
 			key = true
 		}
 	}
 
 	if key == false {
-		spacingData()
-		fmt.Println(" ", "Data tidak ditemukan.")
-		spacingData()
+		spaceNull()
 	}
 
 	if findMoreOrNo() == true {
-		clsCode()
-		spacingData()
+		deleteSpace()
 		tampilMenuCari()
 	} else {
-		clsCode()
-		spacingData()
+		deleteSpace()
 		tampilMenu()
 	}
 }
@@ -467,28 +445,22 @@ func cariBerdasarkanFakultas() {
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].fakultas == kataKunci {
-			spacingData()
-			fmt.Println("=======================================================")
+			spaceEquals()
 			showData(i)
-			spacingData()
-			fmt.Println("=======================================================")
+			spaceEquals()
 			key = true
 		}
 	}
 
 	if key == false {
-		spacingData()
-		fmt.Println(" ", "Data tidak ditemukan.")
-		spacingData()
+		spaceNull()
 	}
 
 	if findMoreOrNo() == true {
-		clsCode()
-		spacingData()
+		deleteSpace()
 		tampilMenuCari()
 	} else {
-		clsCode()
-		spacingData()
+		deleteSpace()
 		tampilMenu()
 	}
 }
@@ -503,28 +475,22 @@ func cariBerdasarkanJurusan() {
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].jurusan == kataKunci {
-			spacingData()
-			fmt.Println("=======================================================")
+			spaceEquals()
 			showData(i)
-			spacingData()
-			fmt.Println("=======================================================")
+			spaceEquals()
 			key = true
 		}
 	}
 
 	if key == false {
-		spacingData()
-		fmt.Println(" ", "Data tidak ditemukan.")
-		spacingData()
+		spaceNull()
 	}
 
 	if findMoreOrNo() == true {
-		clsCode()
-		spacingData()
+		deleteSpace()
 		tampilMenuCari()
 	} else {
-		clsCode()
-		spacingData()
+		deleteSpace()
 		tampilMenu()
 	}
 }
@@ -539,28 +505,22 @@ func cariBerdasarkanKelas() {
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].kelas == kataKunci {
-			spacingData()
-			fmt.Println("=======================================================")
+			spaceEquals()
 			showData(i)
-			spacingData()
-			fmt.Println("=======================================================")
+			spaceEquals()
 			key = true
 		}
 	}
 
 	if key == false {
-		spacingData()
-		fmt.Println(" ", "Data tidak ditemukan.")
-		spacingData()
+		spaceNull()
 	}
 
 	if findMoreOrNo() == true {
-		clsCode()
-		spacingData()
+		deleteSpace()
 		tampilMenuCari()
 	} else {
-		clsCode()
-		spacingData()
+		deleteSpace()
 		tampilMenu()
 	}
 }
@@ -576,8 +536,7 @@ func updateData() {
 	var pos int
 
 	pos = -1
-	clsCode()
-	spacingData()
+	deleteSpace()
 	fmt.Print(" ", "NIM: ")
 	fmt.Scanln(&nimS)
 
@@ -653,23 +612,17 @@ func updateData() {
 			if emailS == "-" {
 				mahasiswa[pos].email = emailM
 			}
-			clsCode()
-
-			spacingData()
+			deleteSpace()
 			fmt.Println(" ", "Data berhasil diperbarui.")
 			spacingData()
 			tampilMenu()
 		} else {
-			clsCode()
-
-			spacingData()
+			deleteSpace()
 			fmt.Println(" ", "Data gagal diperbarui.")
 			tampilMenu()
 		}
 	} else {
-		clsCode()
-
-		spacingData()
+		deleteSpace()
 		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 		tampilMenu()
@@ -684,8 +637,7 @@ func hapusData() {
 	var nimS int
 	var key bool
 
-	clsCode()
-	spacingData()
+	deleteSpace()
 	fmt.Print(" ", "NIM: ")
 	fmt.Scanln(&nimS)
 	for i := 0; i < count; i++ {
@@ -706,20 +658,17 @@ func hapusData() {
 					mahasiswa[j+1] = mahasiswa[j+2]
 				}
 			}
-			clsCode()
-			spacingData()
+			deleteSpace()
 			fmt.Println(" ", "Data berhasil dihapus.")
 			spacingData()
 			tampilMenu()
 		} else {
-			clsCode()
-			spacingData()
+			deleteSpace()
 			fmt.Println(" ", "Data gagal diperbarui.")
 			tampilMenu()
 		}
 	} else {
-		clsCode()
-		spacingData()
+		deleteSpace()
 		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 		tampilMenu()
@@ -819,32 +768,6 @@ func deleteOrNo() bool {
 
 // START OF ANOTHER CODE
 
-func tempData() {
-	mahasiswa[0].nim = 1302194068
-	mahasiswa[0].nama = "Rifky Lovanto"
-	mahasiswa[0].fakultas = "Fakultas Informatika"
-	mahasiswa[0].jurusan = "S1 Rekayasa Perangkat Lunak"
-	mahasiswa[0].kelas = "SE-43-02"
-	mahasiswa[0].nohp = "+62-878-2383-7566"
-	mahasiswa[0].email = "lovanto@student.telkomuniversity.ac.id"
-
-	mahasiswa[1].nim = 1302194070
-	mahasiswa[1].nama = "Rizal Maidan Firdaus"
-	mahasiswa[1].fakultas = "Fakultas Rekayasa Industri"
-	mahasiswa[1].jurusan = "S1 Sistem Informasi"
-	mahasiswa[1].kelas = "SE-43-02"
-	mahasiswa[1].nohp = "+62-878-2383-7555"
-	mahasiswa[1].email = "rizalmf@student.telkomuniversity.ac.id"
-
-	mahasiswa[2].nim = 1302194048
-	mahasiswa[2].nama = "Aku Bukan Ya"
-	mahasiswa[2].fakultas = "Fakultas Informatika"
-	mahasiswa[2].jurusan = "S1 Rekayasa Perangkat Lunak"
-	mahasiswa[2].kelas = "SE-43-01"
-	mahasiswa[2].nohp = "+62-878-2383-7566"
-	mahasiswa[2].email = "lovanto@student.telkomuniversity.ac.id"
-}
-
 func countData() {
 	for i := 0; i < n; i++ {
 		if mahasiswa[i].nim == 0 {
@@ -852,6 +775,22 @@ func countData() {
 			break
 		}
 	}
+}
+
+func spaceNull() {
+	spacingData()
+	fmt.Println(" ", "Data tidak ditemukan.")
+	spacingData()
+}
+
+func spaceEquals() {
+	spacingData()
+	fmt.Println("=======================================================")
+}
+
+func deleteSpace() {
+	clsCode()
+	spacingData()
 }
 
 func spacingData() {
@@ -874,7 +813,6 @@ func clsCode() {
 
 func main() {
 	clsCode()
-	tempData()
 	countData()
 	tampilMenu()
 }
