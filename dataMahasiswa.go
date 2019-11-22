@@ -147,18 +147,23 @@ func menuCari() {
 	switch menu {
 	case 1:
 		clsCode()
+		spacingData()
 		cariBerdasarkanNim()
 	case 2:
 		clsCode()
+		spacingData()
 		cariBerdasarkanNama()
 	case 3:
 		clsCode()
+		spacingData()
 		cariBerdasarkanFakultas()
 	case 4:
 		clsCode()
+		spacingData()
 		cariBerdasarkanJurusan()
 	case 5:
 		clsCode()
+		spacingData()
 		cariBerdasarkanKelas()
 	case 6:
 		clsCode()
@@ -382,27 +387,29 @@ func cariBerdasarkanNim() {
 	var kataKunci int
 	var key bool
 
-	fmt.Print("NIM: ")
+	fmt.Print(" ", "NIM: ")
 	fmt.Scanln(&kataKunci)
-	spacingData()
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nim == kataKunci {
-			foundTag()
+			spacingData()
+			fmt.Println("=======================================================")
 			showData(i)
+			spacingData()
+			fmt.Println("=======================================================")
 			key = true
 		}
 	}
+	foundTag()
 
 	if key == false {
-		fmt.Println("Data Tidak Ditemukan.")
+		fmt.Println(" ", "Data Tidak Ditemukan.")
 		spacingData()
 	}
 
-	if moreOrNo() == true {
+	spacingData()
+	if findMoreOrNo() == true {
 		tampilMenuCari()
-	} else {
-		tampilMenu()
 	}
 }
 
@@ -410,24 +417,28 @@ func cariBerdasarkanNama() {
 	var kataKunci string
 	var key bool
 
-	fmt.Print("Nama: ")
+	fmt.Print(" ", "Nama: ")
 	kataKunci = inputWithSpacing()
 	spacingData()
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nama == kataKunci {
-			foundTag()
+			spacingData()
+			fmt.Println("=======================================================")
 			showData(i)
+			spacingData()
+			fmt.Println("=======================================================")
 			key = true
 		}
 	}
+	foundTag()
 
 	if key == false {
-		fmt.Println("Data tidak ditemukan.")
+		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 	}
 
-	if moreOrNo() == true {
+	if findMoreOrNo() == true {
 		tampilMenuCari()
 	} else {
 		tampilMenu()
@@ -438,24 +449,28 @@ func cariBerdasarkanFakultas() {
 	var kataKunci string
 	var key bool
 
-	fmt.Print("Fakultas: ")
+	fmt.Print(" ", "Fakultas: ")
 	kataKunci = inputWithSpacing()
 	spacingData()
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].fakultas == kataKunci {
-			foundTag()
+			spacingData()
+			fmt.Println("=======================================================")
 			showData(i)
+			spacingData()
+			fmt.Println("=======================================================")
 			key = true
 		}
 	}
+	foundTag()
 
 	if key == false {
-		fmt.Println("Data tidak ditemukan.")
+		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 	}
 
-	if moreOrNo() == true {
+	if findMoreOrNo() == true {
 		tampilMenuCari()
 	} else {
 		tampilMenu()
@@ -466,24 +481,28 @@ func cariBerdasarkanJurusan() {
 	var kataKunci string
 	var key bool
 
-	fmt.Print("Jurusan: ")
+	fmt.Print(" ", "Jurusan: ")
 	kataKunci = inputWithSpacing()
 	spacingData()
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].jurusan == kataKunci {
-			foundTag()
+			spacingData()
+			fmt.Println("=======================================================")
 			showData(i)
+			spacingData()
+			fmt.Println("=======================================================")
 			key = true
 		}
 	}
+	foundTag()
 
 	if key == false {
-		fmt.Println("Data tidak ditemukan.")
+		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 	}
 
-	if moreOrNo() == true {
+	if findMoreOrNo() == true {
 		tampilMenuCari()
 	} else {
 		tampilMenu()
@@ -494,24 +513,28 @@ func cariBerdasarkanKelas() {
 	var kataKunci string
 	var key bool
 
-	fmt.Print("Kelas: ")
+	fmt.Print(" ", "Kelas: ")
 	kataKunci = inputWithSpacing()
 	spacingData()
 
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].kelas == kataKunci {
-			foundTag()
+			spacingData()
+			fmt.Println("=======================================================")
 			showData(i)
+			spacingData()
+			fmt.Println("=======================================================")
 			key = true
 		}
 	}
+	foundTag()
 
 	if key == false {
-		fmt.Println("Data tidak ditemukan.")
+		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 	}
 
-	if moreOrNo() == true {
+	if findMoreOrNo() == true {
 		tampilMenuCari()
 	} else {
 		tampilMenu()
@@ -528,7 +551,7 @@ func updateData() {
 	var pos int
 	var key bool
 
-	fmt.Print("NIM: ")
+	fmt.Print(" ", "NIM: ")
 	fmt.Scanln(&nimS)
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nim == nimS {
@@ -537,17 +560,17 @@ func updateData() {
 			pos = i
 			key = true
 
-			fmt.Print("Nama: ")
+			fmt.Print(" ", "Nama: ")
 			namaS = inputWithSpacing()
-			fmt.Print("Fakultas: ")
+			fmt.Print(" ", "Fakultas: ")
 			fakultasS = inputWithSpacing()
-			fmt.Print("Jurusan: ")
+			fmt.Print(" ", "Jurusan: ")
 			jurusanS = inputWithSpacing()
-			fmt.Print("Kelas: ")
+			fmt.Print(" ", "Kelas: ")
 			kelasS = inputWithSpacing()
-			fmt.Print("No.HP: ")
+			fmt.Print(" ", "No.HP: ")
 			nohpS = inputWithSpacing()
-			fmt.Print("Email: ")
+			fmt.Print(" ", "Email: ")
 			emailS = inputWithSpacing()
 		}
 	}
@@ -561,15 +584,15 @@ func updateData() {
 			mahasiswa[pos].kelas = kelasS
 			mahasiswa[pos].nohp = nohpS
 			mahasiswa[pos].email = emailS
-			fmt.Println("Data berhasil diperbarui.")
+			fmt.Println(" ", "Data berhasil diperbarui.")
 			spacingData()
 			tampilMenu()
 		} else {
-			fmt.Println("Data gagal diperbarui.")
+			fmt.Println(" ", "Data gagal diperbarui.")
 			tampilMenu()
 		}
 	} else {
-		fmt.Println("Data tidak ditemukan.")
+		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 		tampilMenu()
 	}
@@ -583,7 +606,7 @@ func hapusData() {
 	var nimS int
 	var key bool
 
-	fmt.Print("NIM: ")
+	fmt.Print(" ", "NIM: ")
 	fmt.Scanln(&nimS)
 	for i := 0; i < count; i++ {
 		if mahasiswa[i].nim == nimS {
@@ -603,15 +626,15 @@ func hapusData() {
 					mahasiswa[j+1] = mahasiswa[j+2]
 				}
 			}
-			fmt.Println("Data berhasil dihapus.")
+			fmt.Println(" ", "Data berhasil dihapus.")
 			spacingData()
 			tampilMenu()
 		} else {
-			fmt.Println("Data gagal diperbarui.")
+			fmt.Println(" ", "Data gagal diperbarui.")
 			tampilMenu()
 		}
 	} else {
-		fmt.Println("Data tidak ditemukan.")
+		fmt.Println(" ", "Data tidak ditemukan.")
 		spacingData()
 		tampilMenu()
 	}
@@ -643,21 +666,24 @@ func addMoreOrNo() bool {
 	return kebenaran
 }
 
-func moreOrNo() bool {
+func findMoreOrNo() bool {
 	var yesOrNo string
 	var kebenaran bool
 
-	fmt.Println("Apakah anda ingin mencari data lagi? Y/N")
-	fmt.Scanln(&yesOrNo)
-	spacingData()
-	if yesOrNo == "Y" || yesOrNo == "y" {
-		kebenaran = true
-	} else if yesOrNo == "N" || yesOrNo == "n" {
-		kebenaran = false
-	} else {
-		fmt.Println("Jawaban anda tidak sesuai. Silakan diulangi!")
-		moreOrNo()
+	for kebenaran = false; !kebenaran; {
+		fmt.Print(" ", "Apakah anda ingin menambah data lagi? Y/N. ")
+		fmt.Scanln(&yesOrNo)
+		spacingData()
+		kebenaran = yesOrNo == "Y" || yesOrNo == "y"
+
+		if yesOrNo == "N" || yesOrNo == "n" {
+			tampilMenu()
+		}
+		if yesOrNo != "N" || yesOrNo != "n" || yesOrNo != "Y" || yesOrNo != "y" {
+			fmt.Println(" ", "Jawaban anda tidak sesuai. Silakan diulangi!")
+		}
 	}
+
 	return kebenaran
 }
 
