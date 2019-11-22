@@ -26,40 +26,46 @@ var count int
 // START OF MENU LIST CODE
 
 func tampilMenu() {
-	fmt.Println("Apa yang ingin anda lakukan?")
-	fmt.Println("1. Menampilkan data.")
-	fmt.Println("2. Menambah data.")
-	fmt.Println("3. Mencari data.")
-	fmt.Println("4. Mengubah data.")
-	fmt.Println("5. Menghapus data.")
-	fmt.Println("6. Keluar.")
+	spacingData()
+	fmt.Println(" ", "Apa yang ingin anda lakukan?")
+	fmt.Println(" ", "1. Menampilkan data.")
+	fmt.Println(" ", "2. Menambah data.")
+	fmt.Println(" ", "3. Mencari data.")
+	fmt.Println(" ", "4. Mengubah data.")
+	fmt.Println(" ", "5. Menghapus data.")
+	fmt.Println(" ", "6. Keluar.")
 
+	spacingData()
 	menuPilih()
 }
 
 func menuTampilData() {
 	clsCode()
-	fmt.Println("Tampilkan dengan?")
-	fmt.Println("1. Apa adanya.")
-	fmt.Println("2. Berdasarkan nim terkecil ke terbesar.")
-	fmt.Println("3. Berdasarkan nim terbesar ke terkecil.")
-	fmt.Println("4. Berdasarkan nama (A-Z).")
-	fmt.Println("5. Berdasarkan nama (Z-A).")
-	fmt.Println("6. Kembali.")
+	spacingData()
+	fmt.Println(" ", "Tampilkan dengan?")
+	fmt.Println(" ", "1. Apa adanya.")
+	fmt.Println(" ", "2. Berdasarkan nim terkecil ke terbesar.")
+	fmt.Println(" ", "3. Berdasarkan nim terbesar ke terkecil.")
+	fmt.Println(" ", "4. Berdasarkan nama (A-Z).")
+	fmt.Println(" ", "5. Berdasarkan nama (Z-A).")
+	fmt.Println(" ", "6. Kembali.")
 
+	spacingData()
 	menuTampilDataPilih()
 }
 
 func tampilMenuCari() {
 	clsCode()
-	fmt.Println("Metode apa yang ingin digunakan?")
-	fmt.Println("1. NIM.")
-	fmt.Println("2. Nama.")
-	fmt.Println("3. Fakultas.")
-	fmt.Println("4. Jurusan.")
-	fmt.Println("5. Kelas.")
-	fmt.Println("6. Kembali.")
+	spacingData()
+	fmt.Println(" ", "Metode apa yang ingin digunakan?")
+	fmt.Println(" ", "1. NIM.")
+	fmt.Println(" ", "2. Nama.")
+	fmt.Println(" ", "3. Fakultas.")
+	fmt.Println(" ", "4. Jurusan.")
+	fmt.Println(" ", "5. Kelas.")
+	fmt.Println(" ", "6. Kembali.")
 
+	spacingData()
 	menuCari()
 }
 
@@ -70,6 +76,7 @@ func tampilMenuCari() {
 func menuPilih() {
 	var menu int
 
+	fmt.Print(" ", "Menu -> ")
 	fmt.Scanln(&menu)
 	switch menu {
 	case 1:
@@ -102,6 +109,7 @@ func menuPilih() {
 func menuTampilDataPilih() {
 	var menu int
 
+	fmt.Print(" ", "Menu -> ")
 	fmt.Scanln(&menu)
 	switch menu {
 	case 1:
@@ -134,6 +142,7 @@ func menuTampilDataPilih() {
 func menuCari() {
 	var menu int
 
+	fmt.Print(" ", "Menu -> ")
 	fmt.Scanln(&menu)
 	switch menu {
 	case 1:
@@ -305,10 +314,10 @@ func tampilData() {
 			count = i
 			break
 		}
-		showData(i)
 		fmt.Println("=======================================================")
-		spacingData()
+		showData(i)
 	}
+	fmt.Println("=======================================================")
 	spacingData()
 	tampilMenu()
 	menuPilih()
@@ -316,13 +325,13 @@ func tampilData() {
 
 func showData(i int) {
 	spacingData()
-	fmt.Println("NIM: ", mahasiswa[i].nim)
-	fmt.Println("Nama: ", mahasiswa[i].nama)
-	fmt.Println("Fakultas: ", mahasiswa[i].fakultas)
-	fmt.Println("Jurusan: ", mahasiswa[i].jurusan)
-	fmt.Println("Kelas: ", mahasiswa[i].kelas)
-	fmt.Println("No.HP: ", mahasiswa[i].nohp)
-	fmt.Println("Email: ", mahasiswa[i].email)
+	fmt.Println(" ", "NIM: ", mahasiswa[i].nim)
+	fmt.Println(" ", "Nama: ", mahasiswa[i].nama)
+	fmt.Println(" ", "Fakultas: ", mahasiswa[i].fakultas)
+	fmt.Println(" ", "Jurusan: ", mahasiswa[i].jurusan)
+	fmt.Println(" ", "Kelas: ", mahasiswa[i].kelas)
+	fmt.Println(" ", "No.HP: ", mahasiswa[i].nohp)
+	fmt.Println(" ", "Email: ", mahasiswa[i].email)
 	spacingData()
 }
 
