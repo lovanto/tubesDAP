@@ -35,7 +35,7 @@ func tampilMenu() {
 	fmt.Println(" ", "3. Mencari data.")
 	fmt.Println(" ", "4. Mengubah data.")
 	fmt.Println(" ", "5. Menghapus data.")
-	fmt.Println(" ", "6. Export to TXT.")
+	fmt.Println(" ", "6. Optional menu.")
 	fmt.Println(" ", "7. Keluar.")
 
 	spacingData()
@@ -43,7 +43,7 @@ func tampilMenu() {
 }
 
 func menuTampilData() {
-	deleteSpace()
+	spacingData()
 	fmt.Println(" ", "Tampilkan dengan?")
 	fmt.Println(" ", "1. Apa adanya.")
 	fmt.Println(" ", "2. Berdasarkan nim terkecil ke terbesar.")
@@ -57,8 +57,8 @@ func menuTampilData() {
 }
 
 func tampilMenuCari() {
-	deleteSpace()
-	fmt.Println(" ", "Metode apa yang ingin digunakan?")
+	spacingData()
+	fmt.Println(" ", "Cari berdasarkan?")
 	fmt.Println(" ", "1. NIM.")
 	fmt.Println(" ", "2. Nama.")
 	fmt.Println(" ", "3. Fakultas.")
@@ -94,13 +94,13 @@ func menuPilih() {
 	fmt.Scanln(&menu)
 	switch menu {
 	case 1:
-		spacingData()
+		deleteSpace()
 		menuTampilData()
 	case 2:
 		deleteSpace()
 		tambahData()
 	case 3:
-		spacingData()
+		deleteSpace()
 		cariData()
 	case 4:
 		spacingData()
@@ -115,9 +115,8 @@ func menuPilih() {
 		spacingData()
 		os.Exit(3)
 	default:
-		clsCode()
-		fmt.Println("Menu yang dipilih tidak ada. Silakan diulangi!")
-		spacingData()
+		deleteSpace()
+		fmt.Println(" ", "Menu yang dipilih tidak ada atau salah. Silakan diulangi!")
 		tampilMenu()
 	}
 }
@@ -129,28 +128,26 @@ func menuTampilDataPilih() {
 	fmt.Scanln(&menu)
 	switch menu {
 	case 1:
-		spacingData()
+		deleteSpace()
 		tampilData()
 	case 2:
-		spacingData()
+		deleteSpace()
 		tampilMinToMax()
 	case 3:
-		spacingData()
+		deleteSpace()
 		tampilMaxToMin()
 	case 4:
-		spacingData()
+		deleteSpace()
 		tampilAToZ()
 	case 5:
-		spacingData()
+		deleteSpace()
 		tampilZToA()
 	case 6:
-		spacingData()
-		clsCode()
+		deleteSpace()
 		tampilMenu()
 	default:
-		clsCode()
-		fmt.Println("Menu yang dipilih tidak ada. Silakan diulangi!")
-		spacingData()
+		deleteSpace()
+		fmt.Println(" ", "Menu yang dipilih tidak ada atau salah. Silakan diulangi!")
 		menuTampilData()
 	}
 }
@@ -181,7 +178,7 @@ func menuCari() {
 		tampilMenu()
 	default:
 		deleteSpace()
-		fmt.Println("Metode yang dipilih tidak ada. Silakan diulangi!")
+		fmt.Println(" ", "Kata kunci yang dipilih tidak ada atau salah. Silakan diulangi!")
 		spacingData()
 		tampilMenuCari()
 	}
@@ -209,8 +206,8 @@ func menuTampilExport() {
 		deleteSpace()
 		tampilMenu()
 	default:
-		clsCode()
-		fmt.Println("Menu yang dipilih tidak ada. Silakan diulangi!")
+		deleteSpace()
+		fmt.Println(" ", "Menu yang dipilih tidak ada atau salah. Silakan diulangi!")
 		spacingData()
 		menuTampilData()
 	}
@@ -755,12 +752,13 @@ func findMoreOrNo() bool {
 	var kebenaran bool
 
 	for kebenaran = false; !kebenaran; {
-		fmt.Print(" ", "Apakah anda ingin menambah data lagi? Y/N. ")
+		fmt.Print(" ", "Apakah anda ingin mencari data lagi? Y/N. ")
 		fmt.Scanln(&yesOrNo)
 		spacingData()
 		kebenaran = yesOrNo == "Y" || yesOrNo == "y"
 
 		if yesOrNo == "N" || yesOrNo == "n" {
+			deleteSpace()
 			tampilMenu()
 		}
 		if yesOrNo != "N" || yesOrNo != "n" || yesOrNo != "Y" || yesOrNo != "y" {
@@ -782,6 +780,7 @@ func updateOrNo() bool {
 		kebenaran = yesOrNo == "Y" || yesOrNo == "y"
 
 		if yesOrNo == "N" || yesOrNo == "n" {
+			deleteSpace()
 			tampilMenu()
 		}
 		if yesOrNo != "N" || yesOrNo != "n" || yesOrNo != "Y" || yesOrNo != "y" {
@@ -803,6 +802,7 @@ func deleteOrNo() bool {
 		kebenaran = yesOrNo == "Y" || yesOrNo == "y"
 
 		if yesOrNo == "N" || yesOrNo == "n" {
+			deleteSpace()
 			tampilMenu()
 		}
 		if yesOrNo != "N" || yesOrNo != "n" || yesOrNo != "Y" || yesOrNo != "y" {
@@ -860,7 +860,9 @@ func clsCode() {
 
 // END OF ANOTHER CODE
 
-var path = "test.txt"
+// START OF EXPORT CODE
+
+var path = "hasilExport.txt"
 
 func isError(err error) bool {
 	if err != nil {
@@ -952,9 +954,11 @@ func deleteFile() {
 	fmt.Println(" ", "File txt berhasil dihapus.")
 }
 
+// END OF EXPORT CODE
+
 func tempData() {
 	mahasiswa[0].nim = 1302194068
-	mahasiswa[0].nama = "Rifky Lovanto"
+	mahasiswa[0].nama = "Sir. Rifky Lovanto"
 	mahasiswa[0].fakultas = "Fakultas Informatika"
 	mahasiswa[0].jurusan = "S1 Rekayasa Perangkat Lunak"
 	mahasiswa[0].kelas = "SE-43-02"
@@ -974,8 +978,8 @@ func tempData() {
 	mahasiswa[2].fakultas = "Fakultas Informatika"
 	mahasiswa[2].jurusan = "S1 Rekayasa Perangkat Lunak"
 	mahasiswa[2].kelas = "SE-43-01"
-	mahasiswa[2].nohp = "+62-878-2383-7566"
-	mahasiswa[2].email = "lovanto@student.telkomuniversity.ac.id"
+	mahasiswa[2].nohp = "+62-878-2383-7556"
+	mahasiswa[2].email = "akuBukanDia@student.telkomuniversity.ac.id"
 }
 
 func main() {
