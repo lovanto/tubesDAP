@@ -29,6 +29,7 @@ var count int
 
 func tampilMenu() {
 	spacingData()
+	countData()
 	fmt.Println(" ", "Apa yang ingin anda lakukan?")
 	fmt.Println(" ", "1. Menampilkan data.")
 	fmt.Println(" ", "2. Menambah data.")
@@ -351,11 +352,7 @@ func tampilZToA() {
 
 func tampilData() {
 	clsCode()
-	for i := 0; i < n; i++ {
-		if mahasiswa[i].nim == 0 {
-			count = i
-			break
-		}
+	for i := 0; i < count; i++ {
 		fmt.Println("=======================================================")
 		showData(i)
 	}
@@ -382,6 +379,7 @@ func showData(i int) {
 // START OF ADD NEW DATA CODE
 
 func tambahData() {
+	var key bool
 	fmt.Println("=======================================================")
 	spacingData()
 	for i := count; i < n; i++ {
@@ -399,6 +397,9 @@ func tambahData() {
 		mahasiswa[i].nohp = inputWithSpacing()
 		fmt.Print(" ", "Email: ")
 		mahasiswa[i].email = inputWithSpacing()
+		if mahasiswa[i].nim != 0 {
+			key = true
+		}
 
 		spacingData()
 		fmt.Println("=======================================================")
@@ -409,7 +410,11 @@ func tambahData() {
 		}
 	}
 	deleteSpace()
-	fmt.Println(" ", "Data berhasil ditambahkan.")
+	if key == true {
+		fmt.Println(" ", "Data berhasil ditambahkan.")
+	} else {
+		fmt.Println(" ", "Data gagal ditambahkan.")
+	}
 	tampilMenu()
 }
 
@@ -426,13 +431,13 @@ func cariBerdasarkanNim() {
 	var key bool
 
 	fmt.Print(" ", "NIM: ")
-	fmt.Scanln(&kataKunci)
+	fmt.Scanln(&kataKunci) //digunakan untuk kata kunci data yang ingin dicari
 	spacingData()
 
-	for i := 0; i < count; i++ {
-		if mahasiswa[i].nim == kataKunci {
+	for i := 0; i < count; i++ { //digunakan untuk mencari data sesuai kata kunci sebanyak count
+		if mahasiswa[i].nim == kataKunci { //jika data ada maka akan ditampilkan
 			spaceEquals()
-			showData(i)
+			showData(i) //tampil data sesuai kata kunci
 			spaceEquals()
 			key = true
 		}
@@ -442,7 +447,7 @@ func cariBerdasarkanNim() {
 		spaceNull()
 	}
 
-	if findMoreOrNo() == true {
+	if findMoreOrNo() == true { // ini pilihan apakah ingin mencari data lagi atau tidak
 		deleteSpace()
 		tampilMenuCari()
 	} else {
@@ -584,41 +589,41 @@ func updateData() {
 	pos = -1
 	deleteSpace()
 	fmt.Print(" ", "NIM: ")
-	fmt.Scanln(&nimS)
+	fmt.Scanln(&nimS) //kata kunci data mana yang ingin diubah
 
 	spacingData()
 	fmt.Println(" ", "Ketik '-' jika tidak ingin mengubah data.")
 	spacingData()
 	fmt.Println("=======================================================")
 
-	for i := 0; i < count; i++ {
-		if mahasiswa[i].nim == nimS {
+	for i := 0; i < count; i++ { // digunakan looping pencarian data
+		if mahasiswa[i].nim == nimS { // jika ada data yang sesuai kata kunci maka input akan dilakukan
 
-			showData(i)
+			showData(i) //tampil data sesuai i
 			spacingData()
 			fmt.Println("=======================================================")
 			spacingData()
 			pos = i
 
-			namaM = mahasiswa[i].nama
-			fakultasM = mahasiswa[i].fakultas
-			jurusanM = mahasiswa[i].jurusan
-			kelasM = mahasiswa[i].kelas
-			nohpM = mahasiswa[i].nohp
-			emailM = mahasiswa[i].email
+			namaM = mahasiswa[i].nama         // data sebelumnya akan disimpan di variabel
+			fakultasM = mahasiswa[i].fakultas // data sebelumnya akan disimpan di variabel
+			jurusanM = mahasiswa[i].jurusan   // data sebelumnya akan disimpan di variabel
+			kelasM = mahasiswa[i].kelas       // data sebelumnya akan disimpan di variabel
+			nohpM = mahasiswa[i].nohp         // data sebelumnya akan disimpan di variabel
+			emailM = mahasiswa[i].email       // data sebelumnya akan disimpan di variabel
 
 			fmt.Print(" ", "Nama: ")
-			namaS = inputWithSpacing()
+			namaS = inputWithSpacing() //input data dengan bufio agar data dapat menggunakan spasi
 			fmt.Print(" ", "Fakultas: ")
-			fakultasS = inputWithSpacing()
+			fakultasS = inputWithSpacing() //input data dengan bufio agar data dapat menggunakan spasi
 			fmt.Print(" ", "Jurusan: ")
-			jurusanS = inputWithSpacing()
+			jurusanS = inputWithSpacing() //input data dengan bufio agar data dapat menggunakan spasi
 			fmt.Print(" ", "Kelas: ")
-			kelasS = inputWithSpacing()
+			kelasS = inputWithSpacing() //input data dengan bufio agar data dapat menggunakan spasi
 			fmt.Print(" ", "No.HP: ")
-			nohpS = inputWithSpacing()
+			nohpS = inputWithSpacing() //input data dengan bufio agar data dapat menggunakan spasi
 			fmt.Print(" ", "Email: ")
-			emailS = inputWithSpacing()
+			emailS = inputWithSpacing() //input data dengan bufio agar data dapat menggunakan spasi
 		}
 	}
 
@@ -626,36 +631,36 @@ func updateData() {
 	fmt.Println("=======================================================")
 
 	if pos != -1 {
-		if updateOrNo() == true {
+		if updateOrNo() == true { //cek apakah data benar ingin diperbarui
 			mahasiswa[pos].nim = nimS
 
 			mahasiswa[pos].nama = namaS
-			if namaS == "-" {
+			if namaS == "-" { //jika input == - maka data tidak akan berubah, jika bukan maka akan sesuai yang di inputkan
 				mahasiswa[pos].nama = namaM
 			}
 
 			mahasiswa[pos].fakultas = fakultasS
-			if fakultasS == "-" {
+			if fakultasS == "-" { //jika input == - maka data tidak akan berubah, jika bukan maka akan sesuai yang di inputkan
 				mahasiswa[pos].fakultas = fakultasM
 			}
 
 			mahasiswa[pos].jurusan = jurusanS
-			if jurusanS == "-" {
+			if jurusanS == "-" { //jika input == - maka data tidak akan berubah, jika bukan maka akan sesuai yang di inputkan
 				mahasiswa[pos].jurusan = jurusanM
 			}
 
 			mahasiswa[pos].kelas = kelasS
-			if kelasS == "-" {
+			if kelasS == "-" { //jika input == - maka data tidak akan berubah, jika bukan maka akan sesuai yang di inputkan
 				mahasiswa[pos].kelas = kelasM
 			}
 
 			mahasiswa[pos].nohp = nohpS
-			if nohpS == "-" {
+			if nohpS == "-" { //jika input == - maka data tidak akan berubah, jika bukan maka akan sesuai yang di inputkan
 				mahasiswa[pos].nohp = nohpM
 			}
 
 			mahasiswa[pos].email = emailS
-			if emailS == "-" {
+			if emailS == "-" { //jika input == - maka data tidak akan berubah, jika bukan maka akan sesuai yang di inputkan
 				mahasiswa[pos].email = emailM
 			}
 			deleteSpace()
@@ -685,17 +690,17 @@ func hapusData() {
 
 	deleteSpace()
 	fmt.Print(" ", "NIM: ")
-	fmt.Scanln(&nimS)
-	for i := 0; i < count; i++ {
+	fmt.Scanln(&nimS)            // kata kunci pencarian
+	for i := 0; i < count; i++ { // melakukan looping untuk menentukan apakah data yang dicari ada
 		if mahasiswa[i].nim == nimS {
 
-			showData(i)
+			showData(i) // tampil data yang ingin dihapus
 			key = true
 		}
 	}
 
 	if key == true {
-		if deleteOrNo() == true {
+		if deleteOrNo() == true { // jika jawaban y maka data akan dihapus
 			for j := 0; j < count; j++ {
 				if mahasiswa[j].nim == nimS {
 					mahasiswa[j] = mahasiswa[j+1]
@@ -862,7 +867,7 @@ func clsCode() {
 
 // START OF EXPORT CODE
 
-var path = "hasilExport.txt"
+var path = "hasilExport.txt" //memberi lokasi untuk file txt
 
 func isError(err error) bool {
 	if err != nil {
@@ -874,7 +879,7 @@ func isError(err error) bool {
 
 func createFile() {
 	var _, err = os.Stat(path)
-	if os.IsNotExist(err) {
+	if os.IsNotExist(err) { //jika file pada path tidak ada, maka akan dibuat file tsb
 		var file, err = os.Create(path)
 		if isError(err) {
 			return
@@ -884,31 +889,29 @@ func createFile() {
 }
 
 func writeFile() {
-	// buka file dengan level akses READ & WRITE
-	var file, err = os.OpenFile(path, os.O_RDWR, 0644)
+	var file, err = os.OpenFile(path, os.O_RDWR, 0644) //membaca file ada atau tidak
 	if isError(err) {
 		return
 	}
 	defer file.Close()
-	for i := 0; i < 3; i++ {
-		_, err = file.WriteString(strconv.Itoa(mahasiswa[i].nim))
-		_, err = file.WriteString("\n")
-		_, err = file.WriteString(mahasiswa[i].nama)
-		_, err = file.WriteString("\n")
-		_, err = file.WriteString(mahasiswa[i].fakultas)
-		_, err = file.WriteString("\n")
-		_, err = file.WriteString(mahasiswa[i].jurusan)
-		_, err = file.WriteString("\n")
-		_, err = file.WriteString(mahasiswa[i].kelas)
-		_, err = file.WriteString("\n")
-		_, err = file.WriteString(mahasiswa[i].nohp)
-		_, err = file.WriteString("\n")
-		_, err = file.WriteString(mahasiswa[i].email)
-		_, err = file.WriteString("\n")
-		_, err = file.WriteString("\n")
+	for i := 0; i < count; i++ { //mengulang penulisan data sesuai count(banyak data)
+		_, err = file.WriteString(strconv.Itoa(mahasiswa[i].nim)) //tulis data
+		_, err = file.WriteString("\n")                           //spasi
+		_, err = file.WriteString(mahasiswa[i].nama)              //tulis data
+		_, err = file.WriteString("\n")                           //spasi
+		_, err = file.WriteString(mahasiswa[i].fakultas)          //tulis data
+		_, err = file.WriteString("\n")                           //spasi
+		_, err = file.WriteString(mahasiswa[i].jurusan)           //tulis data
+		_, err = file.WriteString("\n")                           //spasi
+		_, err = file.WriteString(mahasiswa[i].kelas)             //tulis data
+		_, err = file.WriteString("\n")                           //spasi
+		_, err = file.WriteString(mahasiswa[i].nohp)              //tulis data
+		_, err = file.WriteString("\n")                           //spasi
+		_, err = file.WriteString(mahasiswa[i].email)             //tulis data
+		_, err = file.WriteString("\n")                           //spasi
+		_, err = file.WriteString("\n")                           //spasi
 	}
 
-	// simpan perubahan
 	err = file.Sync()
 	if isError(err) {
 		return
@@ -919,16 +922,14 @@ func writeFile() {
 }
 
 func readFile() {
-	// buka file
-	var file, err = os.OpenFile(path, os.O_RDWR, 0644)
+	var file, err = os.OpenFile(path, os.O_RDWR, 0644) //membaca file ada atau tidak
 	if isError(err) {
 		return
 	}
 	defer file.Close()
 
-	// baca file
 	var text = make([]byte, 1024)
-	for {
+	for { //membaca isi file yang ada pada path
 		n, err := file.Read(text)
 		if err != io.EOF {
 			if isError(err) {
@@ -942,11 +943,11 @@ func readFile() {
 	if isError(err) {
 		return
 	}
-	fmt.Println(string(text))
+	fmt.Println(string(text)) //menampilkan data pada path ke cmd
 }
 
 func deleteFile() {
-	var err = os.Remove(path)
+	var err = os.Remove(path) //menghapus file txt
 	if isError(err) {
 		return
 	}
@@ -956,35 +957,8 @@ func deleteFile() {
 
 // END OF EXPORT CODE
 
-func tempData() {
-	mahasiswa[0].nim = 1302194068
-	mahasiswa[0].nama = "Sir. Rifky Lovanto"
-	mahasiswa[0].fakultas = "Fakultas Informatika"
-	mahasiswa[0].jurusan = "S1 Rekayasa Perangkat Lunak"
-	mahasiswa[0].kelas = "SE-43-02"
-	mahasiswa[0].nohp = "+62-878-2383-7566"
-	mahasiswa[0].email = "lovanto@student.telkomuniversity.ac.id"
-
-	mahasiswa[1].nim = 1302194070
-	mahasiswa[1].nama = "Rizal Maidan Firdaus"
-	mahasiswa[1].fakultas = "Fakultas Rekayasa Industri"
-	mahasiswa[1].jurusan = "S1 Sistem Informasi"
-	mahasiswa[1].kelas = "SE-43-02"
-	mahasiswa[1].nohp = "+62-878-2383-7555"
-	mahasiswa[1].email = "rizalmf@student.telkomuniversity.ac.id"
-
-	mahasiswa[2].nim = 1302194048
-	mahasiswa[2].nama = "Aku Bukan Ya"
-	mahasiswa[2].fakultas = "Fakultas Informatika"
-	mahasiswa[2].jurusan = "S1 Rekayasa Perangkat Lunak"
-	mahasiswa[2].kelas = "SE-43-01"
-	mahasiswa[2].nohp = "+62-878-2383-7556"
-	mahasiswa[2].email = "akuBukanDia@student.telkomuniversity.ac.id"
-}
-
 func main() {
 	clsCode()
-	tempData()
 	countData()
 	tampilMenu()
 }
